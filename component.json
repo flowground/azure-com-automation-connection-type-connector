@@ -1,0 +1,117 @@
+{
+    "title": "AutomationManagement",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/automation-connectionType/2015-10-31/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "ConnectionType_ListByAutomationAccount": {
+            "main": "./lib/actions/ConnectionType_ListByAutomationAccount.js",
+            "title": "Retrieve a list of connection types.",
+            "description": "Retrieve a list of connection types.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConnectionType_ListByAutomationAccount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ConnectionType_Delete": {
+            "main": "./lib/actions/ConnectionType_Delete.js",
+            "title": "Delete the connection type.",
+            "description": "Delete the connection type.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConnectionType_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ConnectionType_Get": {
+            "main": "./lib/actions/ConnectionType_Get.js",
+            "title": "Retrieve the connection type identified by connection type name.",
+            "description": "Retrieve the connection type identified by connection type name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConnectionType_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ConnectionType_CreateOrUpdate": {
+            "main": "./lib/actions/ConnectionType_CreateOrUpdate.js",
+            "title": "Create a connection type.",
+            "description": "Create a connection type.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConnectionType_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

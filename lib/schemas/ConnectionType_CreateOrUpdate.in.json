@@ -1,0 +1,80 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._]+$"
+        },
+        "automationAccountName": {
+            "required": true,
+            "type": "string"
+        },
+        "connectionTypeName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The parameters supplied to the create or update connection type operation.",
+            "properties": {
+                "name": {
+                    "description": "Gets or sets the name of the connection type.",
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "Gets or sets the value of the connection type.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "fieldDefinitions": {
+                            "additionalProperties": {
+                                "description": "Definition of the connection fields.",
+                                "properties": {
+                                    "isEncrypted": {
+                                        "description": "Gets or sets the isEncrypted flag of the connection field definition.",
+                                        "type": "boolean"
+                                    },
+                                    "isOptional": {
+                                        "description": "Gets or sets the isOptional flag of the connection field definition.",
+                                        "type": "boolean"
+                                    },
+                                    "type": {
+                                        "description": "Gets or sets the type of the connection field definition.",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "type"
+                                ],
+                                "type": "object"
+                            },
+                            "description": "Gets or sets the field definitions of the connection type.",
+                            "type": "object"
+                        },
+                        "isGlobal": {
+                            "description": "Gets or sets a Boolean value to indicate if the connection type is global.",
+                            "type": "boolean"
+                        }
+                    },
+                    "required": [
+                        "fieldDefinitions"
+                    ]
+                }
+            },
+            "required": [
+                "name",
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
